@@ -20,7 +20,7 @@ var Counter = function (_React$Component) {
         _this.subtractHandler = _this.subtractHandler.bind(_this);
         _this.resetHandler = _this.resetHandler.bind(_this);
         _this.state = {
-            count: 0
+            count: props.count
         };
         return _this;
     }
@@ -62,7 +62,7 @@ var Counter = function (_React$Component) {
                     'h1',
                     null,
                     'Counter: ',
-                    this.state.count
+                    this.state.count ? this.state.count : Counter.defaultProps.count
                 ),
                 React.createElement(
                     'button',
@@ -86,4 +86,8 @@ var Counter = function (_React$Component) {
     return Counter;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
+Counter.defaultProps = {
+    count: 0
+};
+
+ReactDOM.render(React.createElement(Counter, { count: 0 }), document.getElementById('app'));

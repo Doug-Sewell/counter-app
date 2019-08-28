@@ -5,7 +5,7 @@ class Counter extends React.Component {
         this.subtractHandler = this.subtractHandler.bind(this);
         this.resetHandler = this.resetHandler.bind(this);
         this.state = {
-            count:0
+            count:props.count
         }
     }
 
@@ -36,7 +36,7 @@ class Counter extends React.Component {
     render() {
         return(
            <div>
-               <h1>Counter: {this.state.count}</h1>
+               <h1>Counter: {this.state.count?this.state.count:Counter.defaultProps.count}</h1>
                <button onClick={this.addHandler}>+1</button>
                <button onClick={this.subtractHandler}>-1</button>
                <button onClick={this.resetHandler}>Reset</button>
@@ -45,4 +45,8 @@ class Counter extends React.Component {
     }
 }
 
-ReactDOM.render(<Counter />,document.getElementById('app'));
+Counter.defaultProps = {
+    count: 0
+}
+
+ReactDOM.render(<Counter count={0} />,document.getElementById('app'));
